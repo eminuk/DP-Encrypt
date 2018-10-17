@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+	<title>Decrypt-format Preserving Encryption</title>
+	<style type="text/css">
+		#wrap { margin:30px 5px 50px; }
+		.container { width:100%; min-width:500px; max-width:700px; margin:0 auto; border:0px solid; }
+		.container:after { content:""; display:block; clear:both; }
+		.container>h5 { margin-bottom:0; }
+		.container>ol { margin-top:5px; }
+		.wrap { box-sizing:border-box; width:50%; padding:10px; float:left; border:1px solid; }
+		.wrap h4 { margin-top:0; }
+		.wrap .wrap-input>div { width:80%; float:left; }
+		.wrap .wrap-input>div>input { width:100%; }
+		.wrap .wrap-input>div:first-child { width:20%; }
+		.wrap .wrap-input:after { content:""; display:block; clear:both; }
+		.wrap .wrap-button { width:100px; margin:10px auto; }
+	</style>
+	<script src="https://pnumag.github.io/dp-encrypt/dpencrypt-0.0.1.js"></script>
+	<script type="text/javascript">
+		function doEnc() {
+			var plain_ele = document.getElementsByName('plaintext')[0];
+			var pass_ele = document.getElementsByName('passenc')[0];
+			var cipher_ele = document.getElementsByName('ciphertext')[0];
+			if (!plain_ele.value || isNaN(plain_ele.value) || plain_ele.value > 99999999) {
+				alert("plain is require 8-digit number.");
+				return;
+			}
+			if (!pass_ele.value) {
+				alert("pass is require.");
+				return;
+			}
+			plain_ele.value = ("00000000" +  plain_ele.value).slice(-8);
+			cipher_ele.value = dpEncript.encrypt(plain_ele.value, pass_ele.value);
+		}
+		function doDec() {
+			var plain_ele = document.getElementsByName('plaintext')[0];
+			var pass_ele = document.getElementsByName('passdec')[0];
+			var cipher_ele = document.getElementsByName('ciphertext')[0];
+			if (!cipher_ele.value) {
+				alert("cipher_ele is require.");
+				return;
+			}
+			if (!pass_ele.value) {
+				alert("pass is require.");
+				return;
+			}
+			plain_ele.value = dpEncript.decrypt(cipher_ele.value, pass_ele.value);
+		}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<div class="container">
+			<h3>Decrypt-format Preserving Encryption sample page.</h3>
+		</div>
+		<div class="container">
+			<div class="wrap enc">
+				<h4>Encrypt</h4>
+				<div class="wrap-input">
+					<div>plain:</div>
+					<div><input type="text" name="plaintext" value="" maxlength="8" /></div>
+				</div>
+				<div class="wrap-input">
+					<div>pass:</div>
+					<div><input type="password" name="passenc" value="" /></div>
+				</div>
+				<div class="wrap-button">
+					<button type="button" onclick="doEnc();">Encrypt ▶</button>
+				</div>
+			</div>
+			<div class="wrap dec">
+				<h4>Decrypt</h4>
+				<div class="wrap-input">
+					<div>cipher:</div>
+					<div><input type="text" name="ciphertext" value="" readonly /></div>
+				</div>
+				<div class="wrap-input">
+					<div>pass:</div>
+					<div><input type="password" name="passdec" value="" /></div>
+				</div>
+				<div class="wrap-button">
+					<button type="button" onclick="doDec();">◀ Decrypt</button>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<h5>Encrypt</h5>
+			<ol>
+				<li>
+					On the Encrypt side, input the <b>plain</b> and <b>pass</b>, and then click the <b>Encrypt</b> button.
+					(The <b>plain</b> must be an 8-digit number)
+				</li>
+				<li>
+					Check that the <b>cipher</b> value changes every time you press the <b>Encrypt</b> button.<br />
+					(Create a different <b>cipher</b> each time and protect it from the dictionary attack.)
+				</li>
+			</ol>
+			<h5>Decrypt</h5>
+			<ol>
+				<li>Delete the <b>plain</b> value. And enter the <b>pass</b> on the Decrypt side and click the <b>Decrypt</b> button.</li>
+				<li>Make sure that the original <b>plain</b> value is restored.</li>
+				<li>And, enter the wrong <b>pass</b> on the Decrypt side and click the <b>Decrypt</b> button.</li>
+				<li>
+					Check the value of the <b>plain</b> has changed to an 8-digit number different from the original value.<br />
+					(Decrypt-format is preserving! If you don't know the correct <b>pass</b>, you don't know if decrypt is failed.)
+				</li>
+			</ol>
+		</div>
+	</div>
+</body>
+</html>
