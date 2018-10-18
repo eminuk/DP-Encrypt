@@ -148,6 +148,14 @@ var dpEncript = new function () {
         rtn = String(parseInt(param.substr(0,8), 16)).slice(-8);
         return rtn;
     }
+    function _makeKByte(param) {
+        param = param.split("").reduce(function (a, b) { a = ((a << 5) - a) + b.charCodeAt(0); return a & a }, 0); 
+        var rtn = ("00000000" + (param << 1).toString(16)).slice(-8);
+        rtn += ("00000000" + (param >>> 2).toString(16)).slice(-8);
+        rtn += ("00000000" + (param << 3).toString(16)).slice(-8);
+        rtn += ("00000000" + (param >>> 4).toString(16)).slice(-8);
+        return rtn;
+    }
     /**
      * Write console.log to byte format
      * @param {byte array} arr 
@@ -174,7 +182,7 @@ var dpEncript = new function () {
         var plain = _numberToBArr(plaintext);
 
         // Create encrypt round key
-        var k_byte = _stringToBArr(password);
+        var k_byte = _makeKByte(password);
         var rk = _keyScheduleEnc128(k_byte);
 
         // Do encrypt
@@ -202,7 +210,7 @@ var dpEncript = new function () {
         var cipher = atob(ciphertext);
 
         // Create decrypt round key
-        var k_byte = _stringToBArr(password);
+        var k_byte = _makeKByte(password);
         var rk = _keyScheduleDec128(k_byte);
 
         // Do decrypt
