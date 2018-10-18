@@ -1,3 +1,5 @@
+<img src="https://pnumag.github.io/dp-encrypt/images/logo.png" width="100%"/>
+
 # dp-encrypt
 
 ## Decrypt-format Preserving Encryption
