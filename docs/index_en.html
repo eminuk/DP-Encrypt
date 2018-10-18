@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="kr">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
 	<title>Decrypt-format Preserving Encryption</title>
@@ -59,7 +59,7 @@
 			<div class="wrap enc">
 				<h4>Encrypt</h4>
 				<div class="wrap-input">
-					<div>평문:</div>
+					<div>plain:</div>
 					<div><input type="text" name="plaintext" value="" maxlength="8" /></div>
 				</div>
 				<div class="wrap-input">
@@ -67,13 +67,13 @@
 					<div><input type="password" name="passenc" value="" /></div>
 				</div>
 				<div class="wrap-button">
-					<button type="button" onclick="doEnc();">암호화 ▶</button>
+					<button type="button" onclick="doEnc();">Encrypt ▶</button>
 				</div>
 			</div>
 			<div class="wrap dec">
 				<h4>Decrypt</h4>
 				<div class="wrap-input">
-					<div>암호문:</div>
+					<div>cipher:</div>
 					<div><input type="text" name="ciphertext" value="" readonly /></div>
 				</div>
 				<div class="wrap-input">
@@ -81,30 +81,30 @@
 					<div><input type="password" name="passdec" value="" /></div>
 				</div>
 				<div class="wrap-button">
-					<button type="button" onclick="doDec();">◀ 복호화</button>
+					<button type="button" onclick="doDec();">◀ Decrypt</button>
 				</div>
 			</div>
 		</div>
 		<div class="container">
-			<h5>암호화</h5>
+			<h5>Encrypt</h5>
 			<ol>
 				<li>
-					Encrypt 쪽의 <b>평문</b>과 <b>pass</b>를 입력합니다. 그리고 <b>암호화</b> 버튼을 클릭합니다.
-					(<b>평문</b>은 8자리 숫자여야 합니다.)
+					On the Encrypt side, input the <b>plain</b> and <b>pass</b>, and then click the <b>Encrypt</b> button.
+					(The <b>plain</b> must be an 8-digit number)
 				</li>
 				<li>
-					Decrypt 쪽의 <b>암호문</b>에 암호문이 생성된 것을 확인합니다. 그리고 다시 <b>암호화</b> 버튼을 클릭해서, 버튼을 누를 때마다 다른
-					암호문이 생성되는 것을 확인입니다.
+					Check that the <b>cipher</b> value changes every time you press the <b>Encrypt</b> button.<br />
+					(Create a different <b>cipher</b> each time and protect it from the dictionary attack.)
 				</li>
 			</ol>
-			<h5>복호화</h5>
+			<h5>Decrypt</h5>
 			<ol>
-				<li>Encrypt 쪽의 <b>평문</b>을 지우고, Decrypt 쪽의 <b>pass</b>를 입력 후 <b>복호화</b> 버튼을 클릭합니다.</li>
-				<li>처음에 입력했던 평문의 복원된 것을 확인합니다.</li>
-				<li>Decrypt 쪽의 <b>pass</b>에 잘못된 pass를 입력하고 다시 <b>복호화</b> 버튼을 클릭합니다.</li>
+				<li>Delete the <b>plain</b> value. And enter the <b>pass</b> on the Decrypt side and click the <b>Decrypt</b> button.</li>
+				<li>Make sure that the original <b>plain</b> value is restored.</li>
+				<li>And, enter the wrong <b>pass</b> on the Decrypt side and click the <b>Decrypt</b> button.</li>
 				<li>
-					처음에 입력했던 평문과 같은 형식(8자리 숫자)이지만 다른 값이 Encrypt 쪽의 <b>평문</b>에 출력된 것을 확인합니다.<br />
-					(Decrypt-format is preserving! 정확한 <b>pass</b>를 모른다면, 복호화 작업이 실패했는지도 알 수 없습니다.)
+					Check the value of the <b>plain</b> has changed to an 8-digit number different from the original value.<br />
+					(Decrypt-format is preserving! If you don't know the correct <b>pass</b>, you don't know if decrypt is failed.)
 				</li>
 			</ol>
 		</div>
