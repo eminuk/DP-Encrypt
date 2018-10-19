@@ -1,8 +1,22 @@
 <img src="docs/images/logo.png" width="100%"/>
 
-# dp-encrypt
+# DP Encrypt
 
-## Decrypt-format Preserving Encryption
+## DP Encrypt 란
+
+### DP(Decrypt-format Preserving) - 복호화 형태 보존
+
+- 일반적으로 암호문(cyphertext)을 잘못된 key로 복호화 하면, 알아볼 수 없는 이상한 문자열이 나와 복호화가 실패 했음을 인지할 수 있습니다.
+- *DP Encrypt*는 잘못된 key로 복호화 하더라도, 평문(plaintext)과 같은 형식을 유지해 줌으로서 복호화 실패 여부를 알 수 없습니다.
+  - 복호화 실패 여부를 판단할 수 없기 때문에 [사전 공격(Dictionary attack)](https://ko.wikipedia.org/wiki/사전_공격)을 예방할 수 있습니다.
+
+### Variable cyphertext - 가변적 암호문
+
+- 일반적으로 같은 평문과 key로 생성된 암호문은 같은 값을 가집니다.
+- *DP Encrypt*는 암호문 생성 로직에 난수 요소가 포함되어 있어 같은 평문과 key를 사용하더라도 매번 다른 값을 가집니다.
+  - 생성된 암호문의 값이 다르기 때문에 암호문을 비교해서 추가 정보를 얻는 것을 예방할 수 있습니다.
+
+---
 
 ### 프로젝트 목적 및 용도
 
