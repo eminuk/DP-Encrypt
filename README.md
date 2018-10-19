@@ -1,5 +1,7 @@
 <img src="docs/images/logo.png" width="100%"/>
 
+# ![javascript](https://img.shields.io/badge/javascript-brightgreen.svg)
+
 # DP Encrypt
 
 ## DP Encrypt 란
