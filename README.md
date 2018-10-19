@@ -1,4 +1,4 @@
-# ![javascript](https://img.shields.io/badge/javascript-brightgreen.svg)
+# ![javaScript](https://img.shields.io/badge/JavaScript-brightgreen.svg) ![Encrypt](https://img.shields.io/badge/Encrypt-brightgreen.svg)
 
 <img src="docs/images/logo.png" width="100%"/>
 
