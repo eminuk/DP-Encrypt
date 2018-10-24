@@ -1,22 +1,33 @@
-# ![javaScript](https://img.shields.io/badge/JavaScript-brightgreen.svg) ![Encrypt](https://img.shields.io/badge/Encrypt-brightgreen.svg)
+![javaScript](https://img.shields.io/badge/JavaScript-green.svg) ![Encrypt](https://img.shields.io/badge/Encrypt-green.svg)
 
 <img src="docs/images/logo.png" width="100%"/>
 
 # DP Encrypt
 
-## DP Encrypt 란
+## DP 란
+
+- *Decrypt-format Preserving*의 약자로 복호화 작업이 실패하더라도 평문의 형식을 유지한 결과를 반환하는 것입니다. 
+- 일반적으로 암호문(cyphertext)을 잘못된 key로 복호화 하면, 알아볼 수 없는 이상한 문자열이 나와 복호화가 실패 했음을 인지할 수 있습니다.
+  ![concept_dpencrypt_common](docs/images/concept_dpencrypt_01.png)
+- *DP Encrypt*는 잘못된 key로 복호화 하더라도, 평문(plaintext)과 같은 형식을 유지해 줌으로서 복호화 실패 여부를 알 수 없습니다.
+  ![concept_dpencrypt_common](docs/images/concept_dpencrypt_02.png)
+
+## DP Encrypt 특징
 
 ### DP(Decrypt-format Preserving) - 복호화 형태 보존
 
-- 일반적으로 암호문(cyphertext)을 잘못된 key로 복호화 하면, 알아볼 수 없는 이상한 문자열이 나와 복호화가 실패 했음을 인지할 수 있습니다.
-- *DP Encrypt*는 잘못된 key로 복호화 하더라도, 평문(plaintext)과 같은 형식을 유지해 줌으로서 복호화 실패 여부를 알 수 없습니다.
-  - 복호화 실패 여부를 판단할 수 없기 때문에 [사전 공격(Dictionary attack)](https://ko.wikipedia.org/wiki/사전_공격)을 예방할 수 있습니다.
+- 복호화 실패 시에도 평문의 형태를 보존합니다.
+- 복호화 실패 여부를 판단할 수 없기 때문에 [사전 공격(Dictionary attack)](https://ko.wikipedia.org/wiki/사전_공격)을 예방할 수 있습니다.
 
 ### Variable cyphertext - 가변적 암호문
 
 - 일반적으로 같은 평문과 key로 생성된 암호문은 같은 값을 가집니다.
 - *DP Encrypt*는 암호문 생성 로직에 난수 요소가 포함되어 있어 같은 평문과 key를 사용하더라도 매번 다른 값을 가집니다.
   - 생성된 암호문의 값이 다르기 때문에 암호문을 비교해서 추가 정보를 얻는 것을 예방할 수 있습니다.
+
+### Front-end encrypt - 프론트엔드 암호화
+
+- 작업중...
 
 ---
 
@@ -30,7 +41,7 @@
 
 ### 프로젝트를 시작하는 방법
 
-- 샘플 페이지: <https://pnumag.github.io/dp-encrypt/>
+- 샘플 페이지: <https://eminuk.github.io/dp-encrypt/>
 - 스크립트 파일로드.
 
   ~~~ HTML
