@@ -17,7 +17,10 @@
 ### DP(Decrypt-format Preserving) - 복호화 형태 보존
 
 - 복호화 실패 시에도 평문의 형태를 보존합니다.
-- 복호화 실패 여부를 판단할 수 없기 때문에 [사전 공격(Dictionary attack)](https://ko.wikipedia.org/wiki/사전_공격)을 예방할 수 있습니다.
+- 복호화 실패 여부를 판단할 수 없기 때문에 *사전 공격*을 예방할 수 있습니다.
+  > 사전 공격(Dictionary attack)은 사전에 있는 단어를 입력하여 암호를 알아내거나 해독하는 컴퓨터 공격법이다. 암호를 알아내기 위한 공격은 사전의 단어를 순차적으로 입력하는 것이다. 단어를 그대로 입력할 뿐 아니라, 대문자와 소문자를 뒤섞기도 하고, 단어에 숫자를 첨부하기도 하는 등의 처리도 병행하면서 공격을 할 수 있다. [사전 공격 위키](https://ko.wikipedia.org/wiki/사전_공격)
+
+  ![concept_dpencrypt_common](docs/images/concept_dpencrypt_03.png)
 
 ### Variable cyphertext - 가변적 암호문
 
